@@ -221,13 +221,24 @@ h1 {
 </div>
 
 <script>
+
 function openImage(img) {
     var viewer = document.getElementById('imageViewer');
     var enlarged = document.getElementById('enlargedImage');
 
+    if (!viewer || !enlarged) {
+        alert('Image viewer elements not found.');
+        return;
+    }
+
     enlarged.src = img.src;
     enlarged.alt = img.alt || 'Enlarged product image';
+
     viewer.style.display = 'flex';
+    viewer.style.visibility = 'visible';
+    viewer.style.opacity = '1';
+    viewer.style.zIndex = '99999';
+
     document.body.style.overflow = 'hidden';
 }
 
@@ -237,8 +248,7 @@ function closeImage() {
     document.body.style.overflow = '';
 }
 </script>
-
-  <body>
+ <body>
   <header>
     <h1 id="top">ANGEL SAFETY SHOES</h1>
 <div class="store-intro">
