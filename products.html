@@ -167,23 +167,38 @@ h1 {
     padding: 18px 10px;
   }
  
+  
   .products {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-    padding: 0 4px;
+    gap: 4px;
+    padding: 0 2px;
+    align-items: start;
   }
 
   .product {
-    padding: 6px;
+    padding: 2px;
+    margin: 0;
     min-width: 0;
   }
 
   .product img {
-    width: 100%;
-    height: 280px;
-    object-fit: contain;
     display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    margin: 0;
   }
+
+  .product h3 {
+    margin: 6px 0 2px;
+    font-size: 16px;
+  }
+
+  .product p {
+    margin: 2px 0;
+    line-height: 1.3;
+  }
+
 
   .store-intro,
   .store-contact {
