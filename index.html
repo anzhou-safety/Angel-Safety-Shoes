@@ -174,14 +174,29 @@ h1 {
   .product img {
     height: 200px;
   }
-  .store-intro,
-  .store-contact {
-    margin: 20px 12px;
-    padding: 20px 16px;
-  }
-  .store-intro p:first-child {
-    font-size: 22px;
-  }
+  
+.store-intro {
+  margin: 6px 4px;
+  padding: 10px 10px;
+}
+
+.store-contact {
+  margin: 6px 4px;
+  padding: 10px;
+}
+
+.store-intro p:first-child {
+  font-size: 32px;
+  line-height: 1.15;
+  margin: 0 0 6px;
+}
+
+.store-intro p:not(:first-child) {
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 4px 0;
+}
+
   .store-nav {
     gap: 6px;
     padding: 10px;
