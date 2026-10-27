@@ -237,6 +237,74 @@ h1 {
   }
 }
 
+
+/* Product Category Styling */
+.product-categories {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 24px 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(16, 36, 59, 0.08);
+}
+
+.product-categories h2 {
+  margin: 0 0 20px;
+  color: #10243b;
+  font-size: 28px;
+  text-align: center;
+}
+
+.category-group {
+  margin-top: 20px;
+}
+
+.category-group h3 {
+  margin: 0 0 12px;
+  color: #10243b;
+  font-size: 17px;
+}
+
+.category-btn,
+.feature-btn {
+  margin: 4px 6px 4px 0;
+  padding: 10px 16px;
+  border: 1px solid #d6deea;
+  border-radius: 24px;
+  background: #f3f6fb;
+  color: #10243b;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.category-btn:hover,
+.feature-btn:hover,
+.category-btn.active,
+.feature-btn.active {
+  background: #10243b;
+  color: #ffffff;
+  border-color: #10243b;
+}
+
+@media (max-width: 600px) {
+  .product-categories {
+    margin: 18px 12px;
+    padding: 20px 14px;
+  }
+
+  .product-categories h2 {
+    font-size: 23px;
+  }
+
+  .category-btn,
+  .feature-btn {
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+}
+    
 </style>
 </head>
 <body>
@@ -252,7 +320,29 @@ h1 {
   <a href="products.html">Products</a >
   <a href="contact.html">Contact</a >
 </nav>
-<div class="products" id="products">
+<!-- Product Categories -->
+<section class="product-categories">
+  <h2>Browse Our Products</h2>
+
+  <div class="category-group">
+    <h3>Shop by Type</h3>
+    <button type="button" class="category-btn active" data-filter="all">All Products</button>
+    <button type="button" class="category-btn" data-filter="work-shoes">Work Shoes</button>
+    <button type="button" class="category-btn" data-filter="safety-boots">Safety Boots</button>
+    <button type="button" class="category-btn" data-filter="safety-sneakers">Safety Sneakers</button>
+  </div>
+
+  <div class="category-group">
+    <h3>Shop by Feature</h3>
+    <button type="button" class="feature-btn" data-feature="all">All Features</button>
+    <button type="button" class="feature-btn" data-feature="breathable">Breathable</button>
+    <button type="button" class="feature-btn" data-feature="steel-toe">Steel Toe</button>
+    <button type="button" class="feature-btn" data-feature="slip-resistant">Slip Resistant</button>
+    <button type="button" class="feature-btn" data-feature="waterproof">Waterproof</button>
+  </div>
+</section>
+
+  <div class="products" id="products">
    <div class="product" data-type="work-shoes" data-features="breathable">
         <img
           src="images/A2626-1.png"
@@ -865,5 +955,65 @@ function closeImage() {
     document.body.style.overflow = '';
 }
 </script>
- </body>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const products = document.querySelectorAll("#products .product");
+  const typeButtons = document.querySelectorAll(".category-btn");
+  const featureButtons = document.querySelectorAll(".feature-btn");
+
+  let selectedType = "all";
+  let selectedFeature = "all";
+
+  function filterProducts() {
+    products.forEach(function (product) {
+      const types = (product.dataset.type || "")
+        .split(/\s+/)
+        .filter(Boolean);
+
+      const features = (product.dataset.features || "")
+        .split(/\s+/)
+        .filter(Boolean);
+
+      const matchesType =
+        selectedType === "all" || types.includes(selectedType);
+
+      const matchesFeature =
+        selectedFeature === "all" ||
+        features.includes(selectedFeature);
+
+      product.style.display =
+        matchesType && matchesFeature ? "" : "none";
+    });
+  }
+
+  typeButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      selectedType = button.dataset.filter;
+
+      typeButtons.forEach(function (item) {
+        item.classList.toggle("active", item === button);
+      });
+
+      filterProducts();
+    });
+  });
+
+  featureButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      selectedFeature = button.dataset.feature;
+
+      featureButtons.forEach(function (item) {
+        item.classList.toggle("active", item === button);
+      });
+
+      filterProducts();
+    });
+  });
+
+  filterProducts();
+});
+</script>
+
+</body>
 </html>
