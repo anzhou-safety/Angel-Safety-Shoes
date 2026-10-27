@@ -1012,8 +1012,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const typeButtons = document.querySelectorAll(".category-btn");
   const featureButtons = document.querySelectorAll(".feature-btn");
 
-  let selectedType = "all";
-  let selectedFeature = "all";
+ const params = new URLSearchParams(window.location.search);
+
+let selectedType = params.get("type") || "all";
+let selectedFeature = params.get("feature") || "all";
 
   function filterProducts() {
     products.forEach(function (product) {
