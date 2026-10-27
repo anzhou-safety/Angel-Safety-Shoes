@@ -305,7 +305,66 @@ h1 {
   }
 }
     
-</style>
+
+/* Products Navigation Dropdown */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.store-nav .nav-products {
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 210px;
+  padding: 10px 0;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  z-index: 1000;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
+.store-nav .dropdown-menu a {
+  display: block;
+  padding: 10px 16px;
+  color: #10243b;
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.store-nav .dropdown-menu a:hover,
+.store-nav .dropdown-menu a:focus {
+  background: #f3f6fb;
+  color: #c56a12;
+}
+
+.dropdown-heading {
+  padding: 10px 16px 6px;
+  color: #10243b;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 600px) {
+  .dropdown-menu {
+    min-width: 190px;
+  }
+}
+
+  </style>
 </head>
 <body>
   <header>
@@ -315,31 +374,28 @@ h1 {
 </div>
       </header>
 
-  <nav class="store-nav">
-  <a href="index.html ">Home</a >
-  <a href="products.html">Products</a >
+ 
+<nav class="store-nav">
+  <a href=" ">Home</a >
+
+  <div class="nav-dropdown">
+    <a href="products.html" class="nav-products">Products</a >
+
+    <div class="dropdown-menu">
+      <a href="products.html?type=work-shoes">Three Density shoes</a >
+      <a href="products.html?type=work-shoes">work boots</a >
+      <a href="products.html?type=safety-boots">Safety shoes</a >
+      <a href="products.html?type=safety-sneakers">Breathable shoes</a >
+       <a href="products.html?type=safety-boots">Light shoes</a >
+  </div>
+
   <a href="contact.html">Contact</a >
 </nav>
+
 <!-- Product Categories -->
 <section class="product-categories">
   <h2>Browse Our Products</h2>
-
-  <div class="category-group">
-    <h3>Shop by Type</h3>
-    <button type="button" class="category-btn active" data-filter="all">All Products</button>
-    <button type="button" class="category-btn" data-filter="work-shoes">Work Shoes</button>
-    <button type="button" class="category-btn" data-filter="safety-boots">Safety Boots</button>
-    <button type="button" class="category-btn" data-filter="safety-sneakers">Safety Sneakers</button>
-  </div>
-
-  <div class="category-group">
-    <h3>Shop by Feature</h3>
-    <button type="button" class="feature-btn" data-feature="all">All Features</button>
-    <button type="button" class="feature-btn" data-feature="breathable">Breathable</button>
-    <button type="button" class="feature-btn" data-feature="steel-toe">Steel Toe</button>
-    <button type="button" class="feature-btn" data-feature="slip-resistant">Slip Resistant</button>
-    <button type="button" class="feature-btn" data-feature="waterproof">Waterproof</button>
-  </div>
+ 
 </section>
 
   <div class="products" id="products">
