@@ -279,13 +279,20 @@ h1 {
   transition: all 0.2s ease;
 }
 
-.category-btn:hover,
-.feature-btn:hover,
 .category-btn.active,
 .feature-btn.active {
   background: #10243b;
   color: #ffffff;
   border-color: #10243b;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .category-btn:hover,
+  .feature-btn:hover {
+    background: #10243b;
+    color: #ffffff;
+    border-color: #10243b;
+  }
 }
 
 @media (max-width: 600px) {
